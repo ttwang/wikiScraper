@@ -32,7 +32,7 @@ class wikiScraper:
         
     # extract edit counts of last 'count' number of recent edits from history page itself
     def pullEdits(self):
-        print 'Start data pull of ' + self.pageName + ' Wikipedia Edits'
+        print 'Start data pull of ' + self.pageName + ' Wikipedia Edits Counts'
         flag = True
         allDF = []
         
@@ -96,7 +96,7 @@ class wikiScraper:
     
     # extract view counts from json service (stats.grok.se)
     def pullViews(self):
-        print 'Start data pull of ' + self.pageName + ' Wikipedia views'
+        print 'Start data pull of ' + self.pageName + ' Wikipedia view counts'
         # hit followers page to get the date of creation
         page1 = urllib2.urlopen(self.urlInfoPage)
         soup1 = BeautifulSoup(page1.read())
@@ -139,9 +139,8 @@ class wikiScraper:
         
         return viewDF
 
-# usage: python wikiScraperClass.py pageName dataDir
-# pageName = name of wikipedia page to pull stats from
-# dataDir = directory location to store this rawData
+# usage: python wikiScraperClass.py pageName 
+# pageName = name of wikipedia page to pull counts for
 def main():
     if len(sys.argv) < 2:
         sys.stderr.write('Error: Must input at least wiki page name! e.g., "Puppy"')
